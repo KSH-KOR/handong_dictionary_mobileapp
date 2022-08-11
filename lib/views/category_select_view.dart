@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sossu/constants/routes.dart';
 import 'package:sossu/enums/category.dart';
+import 'package:sossu/enums/menu_action.dart';
 import 'package:sossu/services/auth/auth_service.dart';
 import 'package:sossu/utilities/category_enum_to_string.dart';
+import 'package:sossu/utilities/dialogs.dart';
 import 'package:sossu/utilities/helper_widgets.dart';
 
 class CategorySelectView extends StatefulWidget {
@@ -45,7 +48,33 @@ class _CategorySelectViewState extends State<CategorySelectView> {
     return Scaffold(
         body: ListView(
           children: [
-            addVerticalSpace(100),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                PopupMenuButton<MenuAction>(
+                  onSelected: (value) async {
+                    switch (value) {
+                      case MenuAction.logout:
+                        final shouldLogout = await showLogOutDialog(context);
+                        if (shouldLogout) {
+                          await AuthService.firebase().logOut();
+                          Navigator.of(context)
+                              .pushNamedAndRemoveUntil(loginRoute, (_) => false);
+                        }
+                        break;
+                    }
+                  },
+                  itemBuilder: (contest) {
+                    return const [
+                      PopupMenuItem<MenuAction>(
+                          value: MenuAction.logout, child: Text("로그아웃"))
+                    ];
+                  },
+                ),
+                addHorizontalSpace(20),
+              ],
+            ), 
+            addVerticalSpace(75),
             GridView.builder(
                 shrinkWrap: true,
                 itemCount: MyCategory.values.length,
@@ -93,7 +122,7 @@ class _CategorySelectViewState extends State<CategorySelectView> {
                 onPressed: () {
                   final user = AuthService.firebase().currentUser;
                   user!.profile.fetchFavCategory(_selected);
-                  print(user.profile.favCategory);
+                  Navigator.of(context).pushNamedAndRemoveUntil(contestSelectRoute, (route) => false);
                 },
                 child: const Text(
                   '완료',

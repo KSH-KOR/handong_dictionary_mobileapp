@@ -1,31 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:sossu/enums/category.dart';
 import 'package:sossu/property/contest.dart';
+import 'package:sossu/views/empty_contents_view.dart';
 
 class ContestGridView extends StatefulWidget {
-  const ContestGridView({Key? key, this.crossAxisCount = 2, this.itemHeight = 150, required this.contestList, required this.ontap}) : super(key: key);
+  const ContestGridView({
+    Key? key,
+    this.crossAxisCount = 2,
+    this.itemHeight = 150,
+    required this.contestList,
+    required this.selectedCategory,
+  }) : super(key: key);
 
   final int crossAxisCount;
   final double itemHeight;
   final ContestList contestList;
-  final Function ontap;
+  final MyCategory selectedCategory;
 
   @override
   State<ContestGridView> createState() => _ContestGridViewState();
 }
 
 class _ContestGridViewState extends State<ContestGridView> {
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
     const int crossAxisCount = 2;
-    const double itemHeight = 150;
+    const double itemHeight = 260;
     final double itemWidth = size.width / crossAxisCount;
-    
-    return GridView.builder(
+
+    final int itemCount =
+        widget.contestList.specificCategoryLength(widget.selectedCategory);
+    final List<Contest> selectedCategoryList =
+        widget.contestList.specificCategory(widget.selectedCategory);
+
+    return itemCount == 0
+        ? const EmptyContentsPage()
+        : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
                 shrinkWrap: true,
-                itemCount: widget.contestList.length,
+                itemCount: itemCount,
                 controller: ScrollController(keepScrollOffset: false),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: (itemWidth / itemHeight),
@@ -35,22 +51,22 @@ class _ContestGridViewState extends State<ContestGridView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () => widget.ontap(index),
+                        onTap: () {},
                         child: Container(
-                          width: 100,
-                          height: 170,
+                          width: 167,
+                          height: 237,
                           margin: const EdgeInsets.all(4.0),
                           decoration: const BoxDecoration(
                               color: Color.fromARGB(255, 205, 205, 205)),
-                          child: Center(
-                            child: ContestBox(contest: widget.contestList.contest(atIndex: index)!)
+                          child: ContestBox(
+                            contest: selectedCategoryList[index],
                           ),
                         ),
                       ),
                     ],
                   );
-                });
-          
+                }),
+          );
   }
 }
 
@@ -67,22 +83,20 @@ class _ContestBoxState extends State<ContestBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Column(children: [
-          Container(
-            width: 50,
-            height: 100,
-            decoration: const BoxDecoration(color: Colors.grey),
+      child: Column(children: [
+        Expanded(
+          flex: 10,
+          child: Container(
             child: widget.contest.image,
           ),
-          Container(
-            width: 50,
-            height: 25,
+        ),
+        Expanded(
+          child: Container(
             decoration: const BoxDecoration(color: Colors.grey),
             child: Text(widget.contest.title!),
           ),
-        ]),
-      ),
+        ),
+      ]),
     );
   }
 }

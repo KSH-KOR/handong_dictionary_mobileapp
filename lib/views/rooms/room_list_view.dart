@@ -21,7 +21,7 @@ class _RoomListViewState extends State<RoomListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RoomGridView(ontap: () {}, roomList: roomList,),
+      body: RoomGridView(roomList: roomList,),
     );
   }
 }

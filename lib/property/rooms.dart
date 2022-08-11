@@ -12,6 +12,7 @@ class Room{
     required this.resolution,
     required this.categories,
   });
+
 }
 
 class RoomList{
@@ -19,7 +20,12 @@ class RoomList{
   static final RoomList _shared = RoomList._sharedInstance();
   factory RoomList() => _shared;
 
-  final List<Room> _roomList = [];
+  final List<Room> _roomList = [
+    Room(name: '제목', description: '방 내용', resolution: '각오', categories: []),
+    Room(name: '제목', description: '방 내용', resolution: '각오', categories: []),
+    Room(name: '제목', description: '방 내용', resolution: '각오', categories: []),
+    Room(name: '제목', description: '방 내용', resolution: '각오', categories: []),
+  ];
 
    int get length => _roomList.length;
 
@@ -31,8 +37,7 @@ class RoomList{
     _roomList.remove(room);
   }
 
-  Room? contact({required int atIndex}) =>
+  Room? room({required int atIndex}) =>
       length > atIndex ? _roomList[atIndex] : null;
-  
   
 }

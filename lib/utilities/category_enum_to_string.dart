@@ -2,7 +2,6 @@
 import 'package:sossu/enums/category.dart';
 
 String convertCategoryToString(MyCategory category){
-  late final convertedCategory;
   switch(category){
     case MyCategory.idea:
       return '기획/아이디어';

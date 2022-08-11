@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:sossu/enums/category.dart';
-import 'package:sossu/property/contest_info.dart';
+import 'package:sossu/property/contest.dart';
 
 class Profile{
 
@@ -7,8 +8,21 @@ class Profile{
   final bool isLogin ;
   List<MyCategory>? favCategory;
   final List<Contest>? favContest;
+  final Image? profileImage;
 
-  Profile({this.name, this.isLogin = false, this.favCategory, this.favContest});
+  int followingCount;
+  int followerCount;
+  
+
+  Profile({
+    this.followerCount = 0,
+    this.followingCount = 0,
+    this.name,
+    this.isLogin = false,
+    this.favCategory,
+    this.favContest,
+    this.profileImage,
+  });
 
   void fetchFavCategory(List<bool> selected){
     List<MyCategory> list = [];

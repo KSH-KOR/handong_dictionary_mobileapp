@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuth show User;
 import 'package:flutter/foundation.dart';
-import 'package:sossu/property/profile_info.dart';
+import 'package:sossu/property/profile.dart';
 
 @immutable
 class AuthUser {
