@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "678178014799",
+    "project_id": "hdict-f9b29",
+    "storage_bucket": "hdict-f9b29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678178014799:android:5286d455ef8740db814c3a",
+        "android_client_info": {
+          "package_name": "com.example.hdict"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678178014799-b02n4drjhtmci2q7ob8pn4tkbevsvlkr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hdict",
+            "certificate_hash": "526138988d1ccc9515e4d614d1c5f50d2c9bb58a"
+          }
+        },
+        {
+          "client_id": "678178014799-g13o2qekthvd876qmt2llorcsk1q9clh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTxkanESjBa2oXNlJky5Pg4VyOJ7jGo5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678178014799-g13o2qekthvd876qmt2llorcsk1q9clh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "678178014799-c62fgm1ibu92qbgbgjacut45d4r5jaj2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hdict"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
