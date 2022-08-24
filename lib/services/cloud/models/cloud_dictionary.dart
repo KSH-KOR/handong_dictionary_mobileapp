@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:hdict/services/cloud/cloud_storage_constants.dart';
+import 'package:hdict/services/cloud/constants/cloud_storage_constants.dart';
 
 @immutable
 class CloudDictionary{

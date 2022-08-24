@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hdict/constants/routes.dart';
+import 'package:hdict/theme/app_colors.dart';
+import 'package:hdict/theme/text_theme.dart';
 
 import '../services/auth/auth_exceptions.dart';
 import '../services/auth/auth_service.dart';
@@ -15,23 +15,18 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(0xfff8eee0),
+        color: AppColors.loginBackground,
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(152, 181, 152, 0),
               child: Image.asset("assets/image/bookO.png"),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(99, 7, 99, 0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(99, 7, 99, 0),
               child: Text(
                 '한동용어사전',
-                style: TextStyle(
-                  fontFamily: 'PretendardVariable',
-                  fontWeight: FontWeight.w800,
-                  fontSize: 34,
-                  color: Color(0xffff9119),
-                ),
+                style: AppTextStyles.title1.copyWith(color: AppColors.primaryColor),
               ),
             ),
             Padding(
@@ -42,7 +37,7 @@ class LoginView extends StatelessWidget {
                   side: const BorderSide(width: 0.1),
                 ),
                 elevation: 0.0,
-                color: const Color(0xFfF8eee0),
+                color: AppColors.loginBackground,
                 child: InkWell(
                     onTap: () async {
                       try {
@@ -51,6 +46,7 @@ class LoginView extends StatelessWidget {
                         if (user != null) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             mySnackBar(
+                              icon: Image.asset('assets/image/bi_person_circle.png'),
                               text: '${AuthService.firebase().userDisplayName()}님 안녕하세요',
                             ),
                           );
@@ -77,16 +73,11 @@ class LoginView extends StatelessWidget {
                         Padding(
                             padding: const EdgeInsets.fromLTRB(22, 12, 0, 13),
                             child: Image.asset("assets/image/google.png")),
-                        const Padding(
-                            padding: EdgeInsets.fromLTRB(51, 15, 0, 17),
+                        Padding(
+                            padding: const EdgeInsets.fromLTRB(51, 15, 0, 17),
                             child: Text(
                               "구글 로그인",
-                              style: TextStyle(
-                                fontFamily: 'PretendardVariable',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: Color(0xff23241f),
-                              ),
+                              style: AppTextStyles.body1.copyWith(color: const Color(0xFFB1AAA1)),
                             )),
                       ],
                     )),

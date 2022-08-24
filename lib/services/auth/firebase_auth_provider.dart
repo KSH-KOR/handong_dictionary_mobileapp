@@ -7,8 +7,6 @@ import 'auth_provider.dart';
 import 'auth_user.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-import 'dart:developer' show log;
-
 class FirebaseAuthProvider implements AuthProvider {
   @override
   Future<AuthUser> createUser({

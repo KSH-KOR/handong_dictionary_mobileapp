@@ -3,6 +3,7 @@ enum DictionaryCategory {
   campusLife,
   lecture,
   campusFacility,
+  food,
 }
 
 String convertEnumToString(DictionaryCategory enumDictionaryCategory){
@@ -16,5 +17,8 @@ String convertEnumToString(DictionaryCategory enumDictionaryCategory){
       return '강의관련';
     case DictionaryCategory.campusFacility:
       return '학교시설';
+    case DictionaryCategory.food:
+      return '음식';
   }
 }
+ int dictionaryLength() => DictionaryCategory.values.length;

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hdict/theme/app_colors.dart';
+import 'package:hdict/utilities/helper_widgets.dart';
 import '../constants/routes.dart';
-import '../enums/menu_action.dart';
-import '../services/auth/auth_service.dart';
-import '../utilities/dialogs/logout_dialog.dart';
+import '../theme/text_theme.dart';
+import '../widgets/buttons/logout.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,126 +12,108 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          color: const Color(0xffff9119),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(152, 181, 152, 0),
-                child: Image.asset("assets/image/book.png"),
-              ),
-              const Padding(
-                  padding: EdgeInsets.fromLTRB(99, 7, 99, 0),
-                  child: Text(
-                    '한동용어사전',
-                    style: TextStyle(
-                      fontFamily: 'PretendardVariable',
-                      fontWeight: FontWeight.w800,
-                      fontSize: 34,
-                      color: Colors.white,
-                    ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(41, 131, 40, 0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(searchRoute);
-                  },
-                  child: const MyWidget(),
+      backgroundColor: AppColors.primaryColor,
+      body: SingleChildScrollView(
+        
+        child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(152, 181, 152, 0),
+                  child: Image.asset("assets/image/book.png"),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(118, 37, 118, 0),
-                child: SizedBox(
-                  width: 139,
-                  height: 35,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xffffffff),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(99, 7, 99, 0),
+                    child: Text(
+                      '한동용어사전',
+                      style: AppTextStyles.title1
+                          .copyWith(color: AppColors.whiteColor),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(41, 131, 40, 0),
+                  child: GestureDetector(
+                    onLongPress: () {
+                      Navigator.of(context).pushNamed(devSearchRoute);
+                    },
+                    onTap: () {
+                  Navigator.of(context).pushNamed(
+                    searchRoute,
+                    arguments: true,
+                  );
+                    },
+                    child: const SearchBar(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(118, 56, 118, 0),
+                  child: SizedBox(
+                    width: 112,
+                    height: 43,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(quizStartRoute, (route) => false);
+                      },
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: const Color(0xffffffff),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        side: const BorderSide(
+                            width: 0, color: AppColors.primaryColor),
                       ),
-                    ),
-                    child: Row(
-                      children: [
-                        const Text(
-                          '퀴즈 보러가기',
-                          style: TextStyle(
-                            color: Color(0xffff9199),
-                            fontFamily: 'PretendardVariable',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
+                      child: FittedBox(
+                        child: Row(
+                          children: [
+                            Text('용어 퀴즈',
+                                style: AppTextStyles.body3
+                                    .copyWith(color: AppColors.primaryColor)),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 4),
+                              child: Image.asset("assets/image/arrow.png"),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Image.asset("assets/image/arrow.png"),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          )),
-      bottomSheet: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 0,
-            color: const Color(0xffff9119),
-          ),
-          color: const Color(0xffff9119),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            GestureDetector(
-              onTap: () async {
-                final shouldLogout = await showLogOutDialog(context);
-                if (shouldLogout) {
-                  await AuthService.firebase().logOut();
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(loginRoute, (_) => false);
-                }
-              },
-              child: Container(
-                height: 70,
-                width: 90,
-                child: Column(
-                  children: const [
-                    Icon(Icons.logout),
-                    Text('로그아웃'),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(298, 260, 0, 0),
+                  child: LogOutButton(),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
       ),
-    );
+      );
   }
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({Key? key}) : super(key: key);
+
+class SearchBar extends StatelessWidget {
+  const SearchBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(color: AppColors.primaryColor),
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('검색어를 입력하세요'),
+              addHorizontalSpace(10),
+              Text(
+                '검색어를 입력하세요',
+                style: AppTextStyles.body2
+                    .copyWith(color: AppColors.whiteColor.withAlpha(178)),
+              ),
+              addHorizontalSpace(125),
               Image.asset("assets/image/search.png"),
             ],
           ),
           const Divider(
             color: Colors.white,
-            indent: 30,
-            endIndent: 30,
+            thickness: 2,
+            indent: 0,
+            endIndent: 0,
           ),
         ],
       ),
