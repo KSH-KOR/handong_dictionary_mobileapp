@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hdict/enums/request_action.dart';
 import 'package:uuid/uuid.dart';
 
@@ -36,7 +37,7 @@ class RequestButton extends StatelessWidget {
         }
         ScaffoldMessenger.of(context).showSnackBar(
           mySnackBar(
-            icon: Image.asset('assets/image/pencil.png'),
+            icon: SvgPicture.asset('assets/image/pencil.svg'),
             text: snackBarText,
           ),
         );

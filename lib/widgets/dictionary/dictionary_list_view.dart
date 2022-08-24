@@ -29,6 +29,7 @@ class DictionariesListView extends StatelessWidget {
           color:
               isSearchMode ? AppColors.whiteColor : AppColors.searchBarColor),
       child: ListView.separated(
+        controller: ScrollController(keepScrollOffset: false),
         shrinkWrap: true,
         itemCount: dictionaries.length,
         separatorBuilder: (context, index) => const Divider(

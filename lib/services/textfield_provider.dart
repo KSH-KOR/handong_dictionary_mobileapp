@@ -9,4 +9,13 @@ class TextFieldProvider with ChangeNotifier {
     _currentText = newText;
     notifyListeners();
   }
+
+  bool _isSearchMode = false;
+
+  bool get isSearchMode => _isSearchMode;
+
+  set isSearchMode(bool newVal) {
+    _isSearchMode = newVal;
+    notifyListeners();
+  }
 }

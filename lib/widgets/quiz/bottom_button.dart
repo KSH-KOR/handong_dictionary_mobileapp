@@ -65,14 +65,14 @@ class _BottomButtonState extends State<BottomButton> {
     return SizedBox(
       width: 154,
       height: 48,
-      child: OutlinedButton(
+      child: TextButton(
         onPressed: () {
           Provider.of<QuizPageProvider>(context, listen: false).isFinished ? actionsAfterFinished(context) :
           Provider.of<QuizSelectProvider>(context, listen: false).isSubmitted
               ? actionsAfterSubmitted(context)
               : actionsBeforeSubmitted(context);
         },
-        style: OutlinedButton.styleFrom(
+        style: TextButton.styleFrom(
           backgroundColor:
               Provider.of<QuizPageProvider>(context, listen: false).isFinished ? AppColors.primaryColor :
               Provider.of<QuizSelectProvider>(context).currentIndex != null

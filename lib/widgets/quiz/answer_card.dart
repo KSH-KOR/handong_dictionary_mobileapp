@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import '../../enums/answer_status.dart';
 import '../../services/quiz_select_provider.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class AnswerCard extends StatelessWidget {
   const AnswerCard({
     Key? key,
@@ -55,6 +57,7 @@ class AnswerCard extends StatelessWidget {
         color: AppColors.whiteColor,
         child: Row(
           children: [
+            addHorizontalSpace(20),
             getIconBasedOnAnswerStatus(
                 answerStatus: quizSelectProvider.isSubmitted
                     ? getCorrectStatus(
@@ -66,7 +69,7 @@ class AnswerCard extends StatelessWidget {
                     : getSelectedStatus(
                         quizSelectProvider.currentIndex == index,
                       )),
-            addHorizontalSpace(60),
+            addHorizontalSpace(36),
             Text(answer, style: AppTextStyles.body9),
           ],
         ),
@@ -76,23 +79,43 @@ class AnswerCard extends StatelessWidget {
 }
 
 Widget getIconBasedOnAnswerStatus({required AnswerStatus answerStatus}) {
+  const double size = 35;
   switch (answerStatus) {
     case AnswerStatus.correct:
-      return const Icon(
-        Icons.check_circle,
-        color: Colors.black,
+      return SizedBox(
+        height: size,
+        width: size,
+        child: SvgPicture.asset(
+          'assets/image/fill_check_circle.svg',
+          color: const Color(0xFF00AA25),
+        ),
       );
     case AnswerStatus.wrong:
-      return Image.asset('assets/image/circle_x.png');
+      return SizedBox(
+        height: size,
+        width: size,
+        child: SvgPicture.asset(
+          'assets/image/circle_x.svg',
+          color: const Color(0xFFCC0000),
+        ),
+      );
     case AnswerStatus.answered:
-      return const Icon(
-        Icons.check_circle_outline,
-        color: Colors.black,
+      return SizedBox(
+        height: size,
+        width: size,
+        child: SvgPicture.asset(
+          'assets/image/fill_check_circle.svg',
+          color: Colors.black,
+        ),
       );
     case AnswerStatus.notanswered:
-      return const Icon(
-        Icons.circle_outlined,
-        color: Colors.black,
+      return SizedBox(
+        height: size,
+        width: size,
+        child: SvgPicture.asset(
+          'assets/image/circle.svg',
+          color: Colors.black,
+        ),
       );
   }
 }

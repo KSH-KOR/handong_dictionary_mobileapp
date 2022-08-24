@@ -12,7 +12,8 @@ class NavigateToHomePageButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(homeRoute, (route) => false),
       icon: const Icon(
-        Icons.home,
+        Icons.home_outlined,
+        size: 35,
         color: AppColors.appbarIconColor,
       ),
     );

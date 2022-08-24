@@ -63,7 +63,9 @@ class _DictionaryCardViewState extends State<DictionaryCardView> {
                       Text(
                         dictionary.subMeaning,
                         style: AppTextStyles.body8.copyWith(
-                            color: AppColors.textColorWith60Alpha),
+                            color: AppColors.textColorWith60Alpha,
+                            height: 1.8,
+                            ),
 
                       ),
                       addVerticalSpace(82),

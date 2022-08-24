@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hdict/constants/routes.dart';
+import 'package:hdict/theme/app_colors.dart';
+import 'package:hdict/theme/text_theme.dart';
+import 'package:hdict/utilities/helper_widgets.dart';
 import 'package:hdict/widgets/buttons/navigate_to_home.dart';
 import 'package:hdict/widgets/my_appbar.dart';
 
@@ -37,42 +40,41 @@ class QuizStartView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(110.5, 248, 110.5, 0),
+                padding: const EdgeInsets.fromLTRB(110.5, 300, 110.5, 0),
                 child: SizedBox(
                   width: 154,
                   height: 48,
-                  child: OutlinedButton(
+                  child: TextButton(
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(context, quizPlayRoute, (route) => false);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, quizPlayRoute, (route) => false);
                     },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xffff9119),
+                    style: TextButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
+                          borderRadius: BorderRadius.circular(24),
+                          side: const BorderSide(
+                            width: 0,
+                            color: AppColors.primaryColor,
+                          )),
                     ),
                     child: Row(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 12),
                           child: Row(
-                            children: const <Widget>[
+                            children: <Widget>[
+                              addHorizontalSpace(10),
                               Text(
                                 '시작하기',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'PretendardVariable',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                ),
+                                style: AppTextStyles.buttonText
+                                    .copyWith(color: AppColors.whiteColor),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 4),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                  size: 18,
-                                ),
+                              addHorizontalSpace(4),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                color: Colors.white,
+                                size: 18,
                               ),
                             ],
                           ),

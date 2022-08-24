@@ -6,6 +6,8 @@ import '../constants/routes.dart';
 import '../theme/text_theme.dart';
 import '../widgets/buttons/logout.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -19,7 +21,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(152, 181, 152, 0),
-                  child: Image.asset("assets/image/book.png"),
+                  child: SvgPicture.asset("assets/image/book.svg"),
                 ),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(99, 7, 99, 0),
@@ -68,7 +70,7 @@ class HomePage extends StatelessWidget {
                                     .copyWith(color: AppColors.primaryColor)),
                             Padding(
                               padding: const EdgeInsets.only(left: 4),
-                              child: Image.asset("assets/image/arrow.png"),
+                              child: SvgPicture.asset("assets/image/right_arrow.svg"),
                             ),
                           ],
                         ),
@@ -106,7 +108,7 @@ class SearchBar extends StatelessWidget {
                     .copyWith(color: AppColors.whiteColor.withAlpha(178)),
               ),
               addHorizontalSpace(125),
-              Image.asset("assets/image/search.png"),
+              SvgPicture.asset("assets/image/search.svg"),
             ],
           ),
           const Divider(

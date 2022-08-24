@@ -4,6 +4,7 @@ import 'package:hdict/utilities/helper_widgets.dart';
 import 'package:provider/provider.dart';
 import '../services/textfield_provider.dart';
 import '../theme/text_theme.dart';
+import '../widgets/buttons/back.dart';
 import '../widgets/buttons/category_select_list.dart';
 import '../widgets/buttons/dictionary_add.dart';
 import '../widgets/dictionary/dictionary_view.dart';
@@ -42,34 +43,48 @@ class _SearchViewState extends State<SearchView> {
     isSearchMode = _textEditingController.text.isNotEmpty;
     return Scaffold(
       resizeToAvoidBottomInset: false, 
-      appBar: const MyAppBar(hasActionButton: DictionaryAddButton()),
+      appBar: MyAppBar(
+          hasActionButton: const DictionaryAddButton(),
+          leadingButton: isSearchMode
+              ? SearchBackButton(
+                  textEditingController: _textEditingController,
+                  onChanged: () => setState(() {
+                    
+                  }),
+                )
+              : null),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            addVerticalSpace(3),
-            const Text(
-              '무엇이 궁금한가요?',
-              style: AppTextStyles.title2,
-            ),
-            addVerticalSpace(38),
-            AppTextField(
-              maxLines: 1,
-              isAutoFocused: arg as bool,
-              hasPrefixIcon: true,
-              textEditingController: _textEditingController,
-            ),
-            addVerticalSpace(7),
-            isSearchMode ? Container() : const CategorySelectButtonList(),
-            addVerticalSpace(7),
-            SingleChildScrollView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              child: DictionaryView(
-                  textEditingController: _textEditingController,
-                  isSearchMode: isSearchMode,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              addVerticalSpace(3),
+              const Text(
+                '무엇이 궁금한가요?',
+                style: AppTextStyles.title2,
+              ),
+              addVerticalSpace(38),
+              AppTextField(
+                maxLines: 1,
+                isAutoFocused: arg as bool,
+                hasPrefixIcon: true,
+                textEditingController: _textEditingController,
+              ),
+              addVerticalSpace(7),
+              isSearchMode ? Container() : const CategorySelectButtonList(),
+              addVerticalSpace(7),
+              SizedBox(
+                height: 620,
+                child: SingleChildScrollView(
+                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                  child: DictionaryView(
+                      textEditingController: _textEditingController,
+                      isSearchMode: isSearchMode,
+                    ),
                 ),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
       backgroundColor: AppColors.whiteColor,

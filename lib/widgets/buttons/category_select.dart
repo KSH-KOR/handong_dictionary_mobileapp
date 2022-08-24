@@ -41,13 +41,13 @@ class _CategorySelectButtonState extends State<CategorySelectButton> {
             addVerticalSpace(13),
             Text(
               widget.text,
-              style: TextStyle(color: color),
+              style: TextStyle(color: isSelected ? Colors.black : Colors.grey),
             ),
             Divider(
               thickness: 2,
               indent: 20,
               endIndent: 20,
-              color: color,
+              color: isSelected ? Colors.black : AppColors.whiteColor,
             ),
           ],
         ),

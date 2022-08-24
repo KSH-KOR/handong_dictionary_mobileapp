@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hdict/constants/routes.dart';
 import 'package:hdict/theme/app_colors.dart';
 import 'package:hdict/theme/text_theme.dart';
+import 'package:hdict/utilities/helper_widgets.dart';
 
 import '../services/auth/auth_exceptions.dart';
 import '../services/auth/auth_service.dart';
@@ -18,9 +20,10 @@ class LoginView extends StatelessWidget {
         color: AppColors.loginBackground,
         child: Column(
           children: [
+            addVerticalSpace(30),
             Padding(
               padding: const EdgeInsets.fromLTRB(152, 181, 152, 0),
-              child: Image.asset("assets/image/bookO.png"),
+              child: SvgPicture.asset("assets/image/book.svg", color: AppColors.primaryColor,),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(99, 7, 99, 0),
@@ -30,11 +33,11 @@ class LoginView extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(52, 155, 53, 0),
+              padding: const EdgeInsets.fromLTRB(52, 250, 53, 0),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
-                  side: const BorderSide(width: 0.1),
+                  side: const BorderSide(width: 1, color: Color.fromARGB(255, 202, 194, 184)),
                 ),
                 elevation: 0.0,
                 color: AppColors.loginBackground,
@@ -46,7 +49,7 @@ class LoginView extends StatelessWidget {
                         if (user != null) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             mySnackBar(
-                              icon: Image.asset('assets/image/bi_person_circle.png'),
+                              icon: SvgPicture.asset('assets/image/bi_person.svg'),
                               text: '${AuthService.firebase().userDisplayName()}님 안녕하세요',
                             ),
                           );
@@ -72,7 +75,8 @@ class LoginView extends StatelessWidget {
                       children: [
                         Padding(
                             padding: const EdgeInsets.fromLTRB(22, 12, 0, 13),
-                            child: Image.asset("assets/image/google.png")),
+                            child: SvgPicture.asset("assets/image/google.svg")),
+                            addHorizontalSpace(10),
                         Padding(
                             padding: const EdgeInsets.fromLTRB(51, 15, 0, 17),
                             child: Text(

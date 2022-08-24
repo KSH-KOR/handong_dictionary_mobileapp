@@ -74,7 +74,7 @@ class AppTextStyles {
   static const TextStyle body6 = TextStyle(
     fontFamily: 'PretendardVariable',
     fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     //letterSpacing: 16,
   );
   static const TextStyle body7 = TextStyle(
@@ -92,7 +92,7 @@ class AppTextStyles {
   static const TextStyle body8 = TextStyle(
     fontFamily: 'PretendardVariable',
     fontSize: 13,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     //letterSpacing: 16,
   );
   static const TextStyle body5 = TextStyle(

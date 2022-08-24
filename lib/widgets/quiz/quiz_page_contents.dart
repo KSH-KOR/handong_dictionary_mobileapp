@@ -41,13 +41,25 @@ class QuizPageContents extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Center(
-                      child: Text(
-                    '${question.question}은\n무엇을 의미할까요?',
-                    style: AppTextStyles.title4,
-                  )),
+                    child: Column(
+                      children: [
+                        Text(
+                          "'${question.question}'은",
+                          style: AppTextStyles.title4,
+                        ),
+                        const Text(
+                          "무엇을 의미할까요?",
+                          style: AppTextStyles.title4,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 addVerticalSpace(46),
-                progressIndicator,
+                SizedBox(
+                  width: 300,
+                  child: progressIndicator,
+                ),
                 addVerticalSpace(66),
                 Expanded(
                     child: AnswerListCard(
@@ -64,5 +76,3 @@ class QuizPageContents extends StatelessWidget {
     );
   }
 }
-
-

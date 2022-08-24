@@ -71,7 +71,7 @@ class _AddRequestViewState extends State<AddRequestView> {
                       ),
                       addVerticalSpace(36),
                       const Text(
-                        '추가 사항',
+                        '내용',
                         style: AppTextStyles.body7,
                       ),
                       addVerticalSpace(15),
