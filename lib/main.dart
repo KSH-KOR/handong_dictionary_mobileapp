@@ -41,6 +41,7 @@ void main() async {
       ),
     ],
     child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

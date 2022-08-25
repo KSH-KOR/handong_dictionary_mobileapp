@@ -28,8 +28,28 @@ class QuizSelectProvider with ChangeNotifier {
     notifyListeners();
   }
   
-
   String? answer;
 
   int correctCount = 0;
+
+  void reset(){
+    correctCount = 0;
+    isSubmitted = false;
+    isSelectable = true;
+    currentIndex = null;
+  }
+  void start(){
+    reset();
+  }
+  void submitAnswers(){
+    if (currentIndex != null) {
+      isSubmitted = true;
+      isSelectable = false;
+    }
+  }
+  void nextQuiz(){
+    isSubmitted = false;
+    isSelectable = true;
+    currentIndex = null;
+  }
 }

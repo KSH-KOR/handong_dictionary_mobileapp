@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hdict/theme/app_colors.dart';
 import 'package:hdict/widgets/my_appbar.dart';
-import 'package:provider/provider.dart';
 
 import '../../services/cloud/firebase_cloud_quizbook_storage.dart';
 import '../../services/cloud/models/question_model.dart';
-import '../../services/quiz_select_provider.dart';
 import '../../widgets/buttons/navigate_to_home.dart';
 import '../../widgets/quiz/quiz_page.dart';
 

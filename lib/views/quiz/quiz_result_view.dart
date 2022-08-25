@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hdict/theme/text_theme.dart';
 import 'package:hdict/theme/ui_parameters.dart';
 import 'package:hdict/utilities/helper_widgets.dart';
-import 'package:hdict/widgets/my_appbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/quiz_page_provider.dart';

@@ -62,9 +62,10 @@ class QuizPageContents extends StatelessWidget {
                 ),
                 addVerticalSpace(66),
                 Expanded(
-                    child: AnswerListCard(
-                  answers: question.answers,
-                )),
+                  child: AnswerListCard(
+                    answers: question.answers,
+                  ),
+                ),
                 const BottomButton(),
                 addVerticalSpace(88),
               ],

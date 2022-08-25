@@ -22,6 +22,15 @@ class QuizPageProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  bool _isStarted = false;
+
+  bool get isStarted => _isStarted;
+
+  set isStarted(bool newVal) {
+    _isStarted = newVal;
+    notifyListeners();
+  }
+
   void previousQuiz() {
     _currentIndex--;
     notifyListeners();
@@ -30,6 +39,18 @@ class QuizPageProvider with ChangeNotifier {
   void nextQuiz() {
     _currentIndex++;
     notifyListeners();
+  }
+
+  void reset(){
+    currentIndex = 0;
+    isFinished = false;
+    isStarted = false;
+    totalPageCount = null;
+  }
+
+  void start(){
+    reset();
+    isStarted = true;
   }
 
   static final QuizPageProvider _shared =
