@@ -80,42 +80,36 @@ class AnswerCard extends StatelessWidget {
 
 Widget getIconBasedOnAnswerStatus({required AnswerStatus answerStatus}) {
   const double size = 35;
+  late final SvgPicture icon;
   switch (answerStatus) {
     case AnswerStatus.correct:
-      return SizedBox(
-        height: size,
-        width: size,
-        child: SvgPicture.asset(
-          'assets/image/fill_check_circle.svg',
-          color: const Color(0xFF00AA25),
-        ),
+      icon = SvgPicture.asset(
+        'assets/image/fill_check_circle.svg',
+        color: const Color(0xFF00AA25),
       );
+      break;
     case AnswerStatus.wrong:
-      return SizedBox(
-        height: size,
-        width: size,
-        child: SvgPicture.asset(
-          'assets/image/circle_x.svg',
-          color: const Color(0xFFCC0000),
-        ),
+      icon = SvgPicture.asset(
+        'assets/image/circle_x.svg',
+        color: const Color(0xFFCC0000),
       );
+      break;
     case AnswerStatus.answered:
-      return SizedBox(
-        height: size,
-        width: size,
-        child: SvgPicture.asset(
-          'assets/image/fill_check_circle.svg',
-          color: Colors.black,
-        ),
+      icon = SvgPicture.asset(
+        'assets/image/fill_check_circle.svg',
+        color: Colors.black,
       );
+      break;
     case AnswerStatus.notanswered:
-      return SizedBox(
-        height: size,
-        width: size,
-        child: SvgPicture.asset(
-          'assets/image/circle.svg',
-          color: Colors.black,
-        ),
+      icon = SvgPicture.asset(
+        'assets/image/circle.svg',
+        color: Colors.black,
       );
+      break;
   }
+  return SizedBox(
+    height: size,
+    width: size,
+    child: icon,
+  );
 }

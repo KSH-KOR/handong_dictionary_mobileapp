@@ -80,7 +80,6 @@ class FirebaseCloudDictionaryStorage {
     switch (myCategory) {
       case DictionaryCategory.total:
         return allDictionaries();
-
       default:
         return allDictionaries().map(
           (dictionaryList) => dictionaryList.where((dictionary) =>

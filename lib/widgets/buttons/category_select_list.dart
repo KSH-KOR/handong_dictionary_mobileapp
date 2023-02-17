@@ -14,7 +14,7 @@ class CategorySelectButtonList extends StatefulWidget {
 class _CategorySelectButtonListState extends State<CategorySelectButtonList> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       width: 400,
       child: ListView.builder(

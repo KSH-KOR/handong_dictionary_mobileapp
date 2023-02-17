@@ -18,7 +18,7 @@ class BottomButton extends StatefulWidget {
 
 class _BottomButtonState extends State<BottomButton> {
 
-  late final _quizService;
+  late final QuizService _quizService;
 
   @override
   void initState() {

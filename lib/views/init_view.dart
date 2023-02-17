@@ -15,7 +15,7 @@ class InitView extends StatelessWidget {
             case ConnectionState.done:
               final user = AuthService.firebase().currentUser;
               if(user == null) {
-                return const LoginView();
+                return const HomePage();//LoginView();
               } else {
                 return const HomePage();
               }

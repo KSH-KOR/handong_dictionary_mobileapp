@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hdict/services/cloud/firebase_cloud_quizbook_storage.dart';
 import 'package:hdict/services/cloud/models/question_model.dart';
-import 'package:hdict/services/quiz_page_provider.dart';
-import 'package:hdict/theme/app_colors.dart';
 import 'package:hdict/theme/text_theme.dart';
 import 'package:hdict/utilities/helper_widgets.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/routes.dart';
 import '../../services/quiz_select_provider.dart';
 import '../step_progress_indicator.dart';
 import 'answer_list_card.dart';

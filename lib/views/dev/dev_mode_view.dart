@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hdict/services/textfield_provider.dart';
 import 'package:hdict/widgets/dictionary/dictionary_view.dart';
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../../services/cloud/firebase_cloud_dictionary_storage.dart';
 import '../../widgets/buttons/category_select_list.dart';
