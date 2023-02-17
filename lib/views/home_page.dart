@@ -87,10 +87,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(298, 260, 0, 0),
-              child: LogOutButton(),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.fromLTRB(298, 260, 0, 0),
+            //   child: LogOutButton(),
+            // ),
           ],
         ),
       ),
