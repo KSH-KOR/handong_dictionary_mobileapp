@@ -20,7 +20,7 @@ class _DictionaryCardViewState extends State<DictionaryCardView> {
     final dictionary =
         ModalRoute.of(context)!.settings.arguments as CloudDictionary;
     return Scaffold(
-      resizeToAvoidBottomInset: false, 
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.whiteColor,
       appBar: const MyAppBar(hasActionButton: DictionaryReviseButton()),
       body: Padding(
@@ -44,8 +44,10 @@ class _DictionaryCardViewState extends State<DictionaryCardView> {
                   color: AppColors.searchBarColor),
               child: SingleChildScrollView(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 29),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 20,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -56,19 +58,18 @@ class _DictionaryCardViewState extends State<DictionaryCardView> {
                       addVerticalSpace(29),
                       Text(
                         dictionary.meaning,
-                        style: AppTextStyles.body1.copyWith(
-                            color: AppColors.textColorWith60Alpha),
+                        style: AppTextStyles.body1
+                            .copyWith(color: AppColors.textColorWith60Alpha),
                       ),
                       addVerticalSpace(26),
                       Text(
                         dictionary.subMeaning,
                         style: AppTextStyles.body8.copyWith(
-                            color: AppColors.textColorWith60Alpha,
-                            height: 1.8,
-                            ),
-
+                          color: AppColors.textColorWith60Alpha,
+                          height: 1.8,
+                        ),
                       ),
-                      addVerticalSpace(82),
+                      addVerticalSpace(42),
                       const Text(
                         '활용',
                         style: AppTextStyles.buttonText,
@@ -103,7 +104,6 @@ List<Widget> convertListStringToListText(
       .map(
         (text) => Column(
           children: [
-            
             Text(
               text,
               style: AppTextStyles.body8
